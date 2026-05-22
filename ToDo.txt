@@ -1,0 +1,8 @@
+Todo List:
+- Safety Net: Test Normal Item behavior
+- Safety Net: Test Aged Brie behavior
+- Safety Net: Test Sulfuras behavior
+- Safety Net: Test Backstage Passes behavior
+- New Feature: Test Conjured Item degradation (Failing)
+- New Feature: Implement Conjured Item degradation (Passing)
+- Code Health: Cleanly refactor legacy code structure
