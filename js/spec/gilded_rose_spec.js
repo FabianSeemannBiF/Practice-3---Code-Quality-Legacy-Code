@@ -31,4 +31,29 @@ describe("Gilded Rose Safety Net", function() {
     expect(items[0].quality).toEqual(50);
   });
 
+  it("should never decrease quality or change sell_in for Sulfuras", function() {
+    items = [ new Item("Sulfuras, Hand of Ragnaros", 0, 80) ];
+    update_quality();
+    expect(items[0].sell_in).toEqual(0);
+    expect(items[0].quality).toEqual(80);
+  });
+
+  it("should increase Backstage passes quality by 2 when 10 days or less remain", function() {
+    items = [ new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20) ];
+    update_quality();
+    expect(items[0].quality).toEqual(22);
+  });
+
+  it("should increase Backstage passes quality by 3 when 5 days or less remain", function() {
+    items = [ new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20) ];
+    update_quality();
+    expect(items[0].quality).toEqual(23);
+  });
+
+  it("should drop Backstage passes quality to 0 after the concert", function() {
+    items = [ new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20) ];
+    update_quality();
+    expect(items[0].quality).toEqual(0);
+  });
+
 });
