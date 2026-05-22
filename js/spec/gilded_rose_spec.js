@@ -56,4 +56,16 @@ describe("Gilded Rose Safety Net", function() {
     expect(items[0].quality).toEqual(0);
   });
 
+  it("should degrade Conjured items twice as fast as normal items before expiration", function() {
+    items = [ new Item("Conjured Mana Cake", 3, 6) ];
+    update_quality();
+    expect(items[0].quality).toEqual(4); // 6 - 2 = 4
+  });
+
+  it("should degrade Conjured items by 4 points per day when expired", function() {
+    items = [ new Item("Conjured Mana Cake", 0, 6) ];
+    update_quality();
+    expect(items[0].quality).toEqual(2); // 6 - 4 = 2
+  });
+
 });
